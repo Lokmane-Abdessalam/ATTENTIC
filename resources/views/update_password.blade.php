@@ -1,5 +1,6 @@
 <!--non-changing part-->
 
+
 @include($guard.".Includes.topLayout")
 
 <!-- Container Fluid-->
@@ -9,6 +10,7 @@
     {{ session('success') }}
   </div>
   @endif
+  <!-- Container Form --> 
   <div class="d-sm-flex align-items-center justify-content-between mb-4">
     <h1 class="h3 mb-0 text-gray-800">Manage Profile</h1>
     <ol class="breadcrumb">
@@ -31,25 +33,24 @@
             <div class="form-group row mb-3">
               <div class="col-xl-6">
                 <label class="form-control-label">Current Password<span class="text-danger ml-2">*</span></label>
-                <input type="password" class="form-control" required name="{{$guard.'_current_password'}}" value="{{old($guard.'_current_password')}}">
-                @if($errors->has($guard.'_current_password'))
-                <span class="text-danger">{{$errors->first($guard.'_current_password')}}</span>
+                <input type="password" class="form-control" required name="{{'current_password'}}" value="{{old('current_password')}}">
+                @if($errors->has('current_password'))
+                <span class="text-danger">{{$errors->first('current_password')}}</span>
                 @endif
               </div>
               <div class="col-xl-6">
                 <label class="form-control-label">New Password<span class="text-danger ml-2">*</span></label>
-                <input type="password" class="form-control" required name="{{$guard.'_new_password'}}" value="{{old($guard.'_new_password')}}">
-                @if($errors->has($guard.'_new_password'))
+                <input type="password" class="form-control" required name="{{'new_password'}}" value="{{old('new_password')}}">
+                @if($errors->has('new_password'))
 
-                <span class="text-danger">{{$errors->first($guard.'_new_password')}}</span>
+                <span class="text-danger">{{$errors->first('new_password')}}</span>
                 @endif
               </div>
               <div class="col-xl-6">
                 <label class="form-control-label">confirm password<span class="text-danger ml-2">*</span></label>
-                <input type="password" class="form-control" required name="{{$guard.'_new_password_confirmation'}}" value="{{old($guard.'_new_password_confirmation')}}">
+                <input type="password" class="form-control" required name="{{'new_password_confirmation'}}" value="{{old('new_password_confirmation')}}">
 
               </div>
-              <input type="hidden" name="{{$guard.'_id'}}" value="{{auth($guard)->id()}}">
             </div>
             <div class="form-group mb-3">
               <button type="submit" id='submit' class="btn btn-primary">Update</button>
